@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  main
+    h4 Sign-up
+    if errors
+      for error in errors
+        p.errors #{error}
+    form(action='/signup' method='post')
+      div.twelve.columns
+        label(for='name') Name: 
+        input(type='text' name='name' id='name' value=name)
+      div.twelve.columns
+        label(for='password') Password: 
+        input(type='password' name='password' id='password')
+      div.twelve.columns
+        label(for='confirmation') Confirm Password: 
+        input(type='password' name='confirmation' id='confirmation')
+      div.twelve.columns
+        input(type='submit' value='signup')
+      div.twelve.columns
+        p
+        a.button(href='/') Cancel

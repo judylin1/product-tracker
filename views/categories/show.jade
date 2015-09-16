@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  include ../partials/header
+  main
+    h4=category.name
+    for product in products
+      p
+        a(href='/users/' + product.userId + '/products/' + product._id) !{product.name}

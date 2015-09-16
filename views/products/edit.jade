@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  include ../partials/header
+  main
+    .errors
+    form#addProd(action='/users/' + cookieId + '/products/' + product._id + '/edit' method='post')
+      label(for='name') Product Name: 
+      input(type='text' name='name' id='name' value=product.name)
+      p
+        label(for='price') Product Price To The Nearest Dollar:
+        input(type='number' name='price' id='price' value=product.price)
+      p 
+        label(for='product') Purchase At:  
+        input(type='url' name='url' id='product' value=product.url)
+      p
+        label(for='guarantee') Guarantee: 
+        textarea(name='guarantee' id='guarantee')=product.guarantee
+      p Categories:
+      .categories2
+        for category in categories
+          div(class=(product.categories.indexOf(category) > -1 ? 'selected' : undefined)).category !{category} 
+      input#categories(type='hidden' name='categories' value=product.categories)
+      input#submit(type='submit' value='Update')
+    a.button.submit(href='/users/'+ cookieId + '/products/' + product._id) Cancel
+    a.button.delete-product(href='/users/'+ cookieId + '/products/' + product._id + '/delete') Delete

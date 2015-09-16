@@ -1,0 +1,120 @@
+@import url(http://fonts.googleapis.com/css?family=Alegreya+SC:400,700);
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
+
+body {
+  color: #585858;
+  background: url(http://s10.postimg.org/ym4ll5h5l/test.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+main {
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+header {
+  background: #A8A8A8;
+}
+
+.headermain {
+  padding: 1.5em;
+}
+
+.header {
+  height: 3em;
+}
+
+.header a, .header a:visited, .header a:link {
+  color: white;
+}
+
+.errors {
+  color: red;
+  margin: 0;
+}
+
+input[type=text], input[type=number], input[type=password] {
+  width: 88%;
+}
+
+input[type=url] {
+  width: 94%;
+}
+
+label {
+  font-weight: 200;
+}
+
+textarea {
+  width: 94%;
+  height: 7em;
+}
+
+input[type='submit'], input[type=button], button, a.button {
+  background-color: #A1A1A1;
+  color: white;
+  font-size: 0.7em;
+  margin-top: 1em;
+  margin-bottom: -1em;
+  margin-right: 1em;
+}
+
+a:visited, a:link {
+  text-decoration: none;
+  color: #585858;
+}
+
+a.button {
+  text-decoration: none;
+  color: white;
+}
+
+.right {
+  float: right;
+  margin-left: 1em;
+  padding-top: 2em;
+}
+
+.left {
+  float: left;
+  font-size: 1.8em;
+  font-weight: 600;
+  padding-left: 0.5em;
+}
+
+.categories {
+  width: 5em;
+}
+
+.categories2 {
+  width: 97%;
+}
+
+.category {
+  display: inline-block;
+  padding: 0.4em;
+  margin: 0.1em;
+}
+
+.selected {
+  background: #A8A8A8;
+}
+
+.btn.btn-primary {
+  margin-left: 16em;
+  color: white;
+}
+
+.centersub {
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.centermain {
+  text-align: center;
+  font-family: 'Alegreya SC', sans-serif;
+}

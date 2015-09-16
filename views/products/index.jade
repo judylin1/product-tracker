@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  include ../partials/header
+  main
+    h4 Products
+    if products
+      for product in products
+        p
+          a(href='/users/'+cookieId+'/products/'+ product._id) !{product.name}
+    if cookieId
+      a.button(href='/users/'+ cookieId + '/products/new') New

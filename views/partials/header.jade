@@ -1,0 +1,18 @@
+header
+  .headermain
+    .header
+      a.left(href='/') productTracker
+      if !cookieId
+        .right
+          a(href='/login') Login
+        .right
+          a(href='/signup') Sign-Up
+      else
+        .right
+          a(href='/logout') Logout
+        .right |
+        .right
+          a(href='/users/'+ cookieId) Purchased Products
+        .right |
+        .right
+          a(href='/users/'+ cookieId + '/products') Products 

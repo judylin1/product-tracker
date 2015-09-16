@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  include ../partials/header
+  main
+    if product
+      table
+        thead
+          th Product Name
+          th Product Price
+          th Purchase At
+          th Guarantee
+          th Purchased
+        tbody
+          td=product.name
+          td $
+            =product.price
+          td
+            a(href=product.url target='_blank') !{product.url}
+          td=product.guarantee
+          td
+            if cookieId
+              input#purchase(type='checkbox' checked=(purchase ? true : undefined))
+              label(for='purchase')
+      a.button(href='/users/'+ cookieId + '/products/' + product._id + '/edit') Edit
+      a.button.submit(href='/users/'+ cookieId + '/products') Back
+    else
+      a.button.submit(href='/') Back
