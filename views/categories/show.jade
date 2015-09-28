@@ -3,7 +3,20 @@ extends ../layout
 block content
   include ../partials/header
   main
-    h4=category.name
-    for product in products
-      p
-        a(href='/users/' + product.userId + '/products/' + product._id) !{product.name}
+    .container
+      .panel.panel-default
+        .panel-title
+          h1=category.name
+            span  Products
+        .panel-body
+          table.table.table-hover
+            thead
+              tr
+                th Product Name
+                th Product Guarantee
+            tbody
+              for product in products
+                tr
+                  td
+                    a(href='/users/' + product.userId + '/products/' + product._id) !{product.name}
+                  td= product.guarantee

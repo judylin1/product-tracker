@@ -2,19 +2,18 @@ extends layout
 
 block content
   main
-    h4 Login
+    h1 Login
     if errors
       for error in errors
         p.errors #{error}
-    form(action='/login' method='post')
-      div.twelve.columns
-        label(for='name') Name: 
-        input(type='text' name='name' id='name' value=name)
-      div.twelve.columns
-        label(for='password') Password: 
-        input(type='password' name='password' id='password')
-      div.twelve.columns
-        input(type='submit' value='login')
-      div.twelve.columns
-      p
-      a.button(href='/') Cancel
+    .container
+      form(action='/login' method='post')
+        .form-group
+          label.control-label(for='name') Name: 
+          input.form-control(type='text' name='name' id='name' autofocus value=name)
+        .form-group
+          label.control-label(for='password') Password: 
+          input.form-control(type='password' name='password' id='password')
+        .form-group
+          input.btn.btn-default(type='submit' value='Login')
+          a.btn(href='/') Cancel

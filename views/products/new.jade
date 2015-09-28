@@ -3,26 +3,29 @@ extends ../layout
 block content
   include ../partials/header
   main
-    .errors
-    form#addProd(action='/users/' + cookieId + '/products/new' method='post')
-      div.six.columns
-        label(for='name') Product Name: 
-        input(type='text' name='name' id='name' placeholder=' Required')
-      div.six.columns
-        label(for='price') Product Price To The Nearest Dollar:
-        input(type='number' name='price' id='price' min='1' max='9999' size='4' placeholder=' $')
-      div.twelve.columns
-        label(for='product') Purchase At: 
-        input(type='url' name='url' id='product' placeholder=' Required')
-      div.twelve.columns
-        label(for='guarantee') Guarantee: 
-        textarea(name='guarantee' id='guarantee' placeholder='Required')
-      div.twelve.columns
-        p Category
-        .categories2
+    .container
+      h1.text-center.alegreyaText Add A New Product
+      .errors
+      form.josefinText(action='/users/' + cookieId + '/products/new' method='post')
+        .form-group
+          label(for='name') Product Name: 
+          input.form-control(type='text' name='name' id='name' placeholder=' Required')
+        .form-group
+          label(for='price') Product Price To The Nearest Dollar:
+          input.form-control(type='number' name='price' id='price' min='1' max='9999' size='4' placeholder=' $')
+        .form-group
+          label(for='product') Purchase At: 
+          input.form-control(type='url' name='url' id='product' placeholder=' Required' value='http://www.')
+        .form-group
+          label(for='guarantee') Guarantee: 
+          textarea.form-control(name='guarantee' id='guarantee' placeholder='Required' rows='8')
+        .form-group
+          label(for='category') Category:
+          span.italic  Select at least one.
+          br
           for category in categories
-            .category !{category}  
-        input#categories(type='hidden' name='categories')
-      p
-      input#submit(type='submit' value='Add product')
-    a.button.submit(href='/users/'+ cookieId + '/products') Cancel
+            a.btn.btn-default.category !{category}  
+          input#categories(type='hidden' name='categories')
+        .form-group
+          input#submit.btn.btn-primary(type='submit' value='Add product')
+          a.btn(href='/users/'+ cookieId + '/products') Cancel

@@ -2,22 +2,21 @@ extends layout
 
 block content
   main
-    h4 Sign-up
+    h1 Sign-up
     if errors
       for error in errors
         p.errors #{error}
-    form(action='/signup' method='post')
-      div.twelve.columns
-        label(for='name') Name: 
-        input(type='text' name='name' id='name' value=name)
-      div.twelve.columns
-        label(for='password') Password: 
-        input(type='password' name='password' id='password')
-      div.twelve.columns
-        label(for='confirmation') Confirm Password: 
-        input(type='password' name='confirmation' id='confirmation')
-      div.twelve.columns
-        input(type='submit' value='signup')
-      div.twelve.columns
-        p
-        a.button(href='/') Cancel
+    .container
+      form(action='/signup' method='post')
+        .form-group
+          label.control-label(for='name') Name: 
+          input.form-control(type='text' name='name' id='name' autofocus value=name)
+        .form-group
+          label.control-label(for='password') Password: 
+          input.form-control(type='password' name='password' id='password')
+        .form-group
+          label.control-label(for='confirmation') Confirm Password: 
+          input.form-control(type='password' name='confirmation' id='confirmation')
+        .form-group
+          input.btn.btn-default(type='submit' value='Sign-Up')
+          a.btn(href='/') Cancel

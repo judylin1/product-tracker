@@ -3,10 +3,22 @@ extends ../layout
 block content
   include ../partials/header
   main
-    h4 Products
-    if products
-      for product in products
-        p
-          a(href='/users/'+cookieId+'/products/'+ product._id) !{product.name}
-    if cookieId
-      a.button(href='/users/'+ cookieId + '/products/new') New
+    .container
+      .panel.panel-default
+        .panel-title
+          h1 Products
+        .panel-body
+          table.table.table-hover
+            thead
+              tr
+                th Product Name
+                th Guarantee
+            tbody
+              if products
+                for product in products
+                  tr
+                    td
+                      a(href='/users/'+cookieId+'/products/'+ product._id) !{product.name}
+                    td= product.guarantee
+      if cookieId
+        a.btn.btn-primary(href='/users/'+ cookieId + '/products/new') New

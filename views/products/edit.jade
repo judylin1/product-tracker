@@ -3,24 +3,32 @@ extends ../layout
 block content
   include ../partials/header
   main
-    .errors
-    form#addProd(action='/users/' + cookieId + '/products/' + product._id + '/edit' method='post')
-      label(for='name') Product Name: 
-      input(type='text' name='name' id='name' value=product.name)
-      p
-        label(for='price') Product Price To The Nearest Dollar:
-        input(type='number' name='price' id='price' value=product.price)
-      p 
-        label(for='product') Purchase At:  
-        input(type='url' name='url' id='product' value=product.url)
-      p
-        label(for='guarantee') Guarantee: 
-        textarea(name='guarantee' id='guarantee')=product.guarantee
-      p Categories:
-      .categories2
-        for category in categories
-          div(class=(product.categories.indexOf(category) > -1 ? 'selected' : undefined)).category !{category} 
-      input#categories(type='hidden' name='categories' value=product.categories)
-      input#submit(type='submit' value='Update')
-    a.button.submit(href='/users/'+ cookieId + '/products/' + product._id) Cancel
-    a.button.delete-product(href='/users/'+ cookieId + '/products/' + product._id + '/delete') Delete
+    .container
+      h1.text-center.alegreyaText Edit 
+        span
+          !{product.name}
+      .errors
+      form.josefinText(action='/users/' + cookieId + '/products/' + product._id + '/edit' method='post')
+        .form-group
+          label(for='name') Product Name: 
+          input.form-control(type='text' name='name' id='name' value=product.name)
+        .form-group
+          label(for='price') Product Price To The Nearest Dollar:
+          input.form-control(type='number' name='price' id='price' value=product.price)
+        p 
+          label(for='product') Purchase At:  
+          input.form-control(type='url' name='url' id='product' value=product.url)
+        .form-group
+          label(for='guarantee') Guarantee: 
+          textarea.form-control(name='guarantee' id='guarantee')=product.guarantee
+        .form-group
+          label(for='category') Category:
+          span.italic  Select at least one.
+          br
+          for category in categories
+            a.btn.btn-default.category(class=(product.categories.indexOf(category) > -1 ? 'selected' : undefined)).category !{category} 
+          input#categories(type='hidden' name='categories' value=product.categories)
+        .form-group
+          input#submit.btn.btn-success(type='submit' value='Update')
+      a.btn.btn-danger.padbottom(href='/users/'+ cookieId + '/products/' + product._id + '/delete') Delete
+      a.btn.padbottom(href='/users/'+ cookieId + '/products/' + product._id) Cancel
