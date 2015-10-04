@@ -3,13 +3,11 @@ extends ../layout
 block content
   if cookieId
     include ../partials/header
-    .container
-      main
+    main
+      .container
         h1 Categories
-        .categories
-          for category in categories
-            a.category(href=('/categories/' +  category._id)) 
-              !{category.name}
+        for category in categories
+          a.category(href=('/categories/' +  category._id)) !{category.name}
   else
     .navbar.navbar-default
       a.btn.btn-default.navbar-btn.pull-right(data-toggle='modal' data-target='#signupModal') Sign-Up

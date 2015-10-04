@@ -6,7 +6,7 @@ block content
     .container
       .panel.panel-default
         .panel-title
-          h1 Products
+          h1 Added Products
         .panel-body
           table.table.table-hover
             thead
@@ -20,5 +20,3 @@ block content
                     td
                       a(href='/users/'+cookieId+'/products/'+ product._id) !{product.name}
                     td= product.guarantee
-      if cookieId
-        a.btn.btn-primary(href='/users/'+ cookieId + '/products/new') Add New Product

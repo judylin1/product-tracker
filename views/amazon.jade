@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  include partials/header
+  main
+    .panel.panel-default
+      .panel-body
+        form(action='/amazon' method='post')
+          .input-group
+            input.form-control(type='text' name='keywords' placeholder='Search for a product')
+            span.input-group-btn
+              button.btn.btn-default(type='submit') Search 
+                i.fa.fa-amazon
+        .container.down
+          if results
+            for result in results
+              .panel.panel-default.inlineBlock
+                img.floatLeft(src=result.MediumImage[0].URL[0] alt='productImage' height='150' width='80')
+                p.bold
+                  a(href=result.DetailPageURL[0] target="_blank")=result.ItemAttributes[0].Title[0]
+                p <b>Manufacturer:</b> 
+                  span=result.ItemAttributes[0].Manufacturer[0]
+                p <b>Price:</b> 
+                  span=result.Offers[0].Offer[0].OfferListing[0].Price[0].FormattedPrice[0]
+                p <b>Category:</b> 
+                  span=result.ItemAttributes[0].ProductGroup[0]
+                p <b>Eligibile for Prime?</b> 
+                  span=result.Offers[0].Offer[0].OfferListing[0].IsEligibleForPrime[0] == 0 ? 'Yes' : 'No'

@@ -11,13 +11,34 @@ body {
 }
 
 main {
-  margin-top: 2%;
+  margin-left: 220px;
 }
 
 .italic {
   font-style: italic;
   opacity: 0.6;
   font-size: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.down {
+  margin-top: 2%;
+  width: 100%;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.inlineBlock {
+  display: inline-block;
+  width: 47%;
+  margin-left: 1%;
+  height: 150px;
+  overflow: auto;
 }
 
 .navbar-default {
@@ -27,22 +48,6 @@ main {
 .navbar {
   background-color: transparent;
   border: none;
-}
-
-header {
-  background: #A8A8A8;
-}
-
-.headermain {
-  padding: 1.5em;
-}
-
-.header {
-  height: 3em;
-}
-
-.header a, .header a:visited, .header a:link {
-  color: white;
 }
 
 .errors {
@@ -93,10 +98,6 @@ a.button {
   background: #A8A8A8;
 }
 
-.btn.btn-primary {
-  color: white;
-}
-
 .alegreyaText {
   font-family: 'Alegreya SC', sans-serif;
   font-size: 60px;
@@ -104,11 +105,10 @@ a.button {
 
 .josefinText {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 30px;
 }
 
 .row {
-  margin-top: 5%;
+  margin-left: 2%;
 }
 
 .pull-right:first-child {
@@ -146,6 +146,10 @@ label {
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
    opacity: 0.6;
    font-style: italic;
+}
+
+.fa-amazon {
+  color: #FF9900;
 }
 
 /* hover */
@@ -214,5 +218,73 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   margin-top: 0.5%;
   margin-right: 1.5%;
   margin-bottom: 0.5%;
-  font-size: 17px;
+  font-size: 15px;
+}
+
+/* HEADER*/
+/* --- User Select Disable --- */
+.LogoBox, .SideBar, .Header{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* --- Header --- */
+.LogoBox{
+	position: absolute;
+  background-position: center;
+  height: 150px; width: 220px;
+  margin-top: 20px;
+  background-image: url(/images/logo.png);
+  background-size: 145px;
+  background-repeat: no-repeat;
+}
+
+/* --- Header --- */
+.Header{
+	position: absolute;
+  top: 0; left: 220px; right: 0;
+  height: 45px;
+  background-color: #F45B69;
+}
+.HeadBar{
+  float: right;
+  padding: 5px;
+}
+.Top{
+  display: inline-block;
+  font: 14px sans-serif;
+  color: #fff;
+}
+
+/* --- SIDEBAR --- */
+.SideBar{
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 220px;
+  padding-top: 170px;
+  background-color: #456990;
+  height: 124%;
+}
+.Nav {
+  text-align: left;
+  padding-left: 7%;
+  margin-top: 25%;
+  color: white;
+  font-size: 19px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.Nav a {
+  color: white;
+  font-size: 19px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.logout {
+  background-color: transparent;
+  margin-left: 20%;
+  margin-top: 65%;
 }

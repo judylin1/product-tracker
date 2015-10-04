@@ -1,18 +1,38 @@
 header
-  .headermain
-    .header
-      a.left(href='/') productTracker
-      if !cookieId
-        .right
-          a(href='/login') Login
-        .right
-          a(href='/signup') Sign-Up
-      else
-        .right
-          a(href='/logout') Logout
-        .right |
-        .right
-          a(href='/users/'+ cookieId) Purchased Products
-        .right |
-        .right
-          a(href='/users/'+ cookieId + '/products') Products 
+  //- .headermain
+  //-   .header
+  //-     a.left(href='/') productTracker
+  //-     if !cookieId
+  //-       .right
+  //-         a(href='/login') Login
+  //-       .right
+  //-         a(href='/signup') Sign-Up
+  //-     else
+  //-       .right
+  //-         a(href='/logout') Logout
+  //-       .right |
+  //-       .right
+  //-         a(href='/users/'+ cookieId) Purchased Products
+  //-       .right |
+  //-       .right
+  //-         a(href='/users/'+ cookieId + '/products') Products 
+
+  .Wrapper
+    .SideBar
+      .Nav
+        i.fa.fa-money 
+        a(href='/users/'+ cookieId)  Purchased Products
+      .Nav
+        i.fa.fa-shopping-cart 
+        a(href='/users/'+ cookieId + '/products')  Added Products
+      .Nav
+        i.fa.fa-plus  
+        a(href='/users/'+ cookieId + '/products/new')  Add New Product
+      .Nav
+        i.fa.fa-search 
+        a(href='/amazon')  Amazon
+      .Nav
+        a.btn.btn-default.logout(href='/logout') Logout  
+          i.fa.fa-sign-out
+    a(href='/')
+      .LogoBox

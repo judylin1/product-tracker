@@ -9,16 +9,16 @@ block content
       form.josefinText(action='/users/' + cookieId + '/products/new' method='post')
         .form-group
           label(for='name') Product Name: 
-          input.form-control(type='text' name='name' id='name' placeholder=' Required')
+          input#name.form-control(type='text' name='name' placeholder=' Required')
         .form-group
           label(for='price') Product Price To The Nearest Dollar:
-          input.form-control(type='number' name='price' id='price' min='1' max='9999' size='4' placeholder=' $')
+          input#price.form-control(type='number' name='price' min='1' max='9999' size='4' placeholder=' $')
         .form-group
           label(for='product') Purchase At: 
-          input.form-control(type='url' name='url' id='product' placeholder=' Required' value='http://www.')
+          input#product.form-control(type='url' name='url' placeholder=' Required' value='http://www.')
         .form-group
           label(for='guarantee') Guarantee: 
-          textarea.form-control(name='guarantee' id='guarantee' placeholder='Required' rows='8')
+          textarea#guarantee.form-control(name='guarantee' placeholder='Required' rows='8')
         .form-group
           label(for='category') Category:
           span.italic  Select at least one.
