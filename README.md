@@ -24,4 +24,4 @@ If nodemon is not installed, run:
 - Cookie-Session / DotENV / bCrypt
 
 ## ERD Diagram
-![](http://s1.postimg.org/dwnwmwzkv/Screen_Shot_2015_08_20_at_9_34_07_AM.png)
+![](http://s11.postimg.org/u4bwg3ho3/Screen_Shot_2015_10_04_at_7_53_31_PM.png)
