@@ -35,24 +35,35 @@ module.exports = {
     return db.Products.find({_id: {$in: user.products}})
   },
 
-  new: function (name, price, url, userId, guarantee, categories) {
+  new: function (name, price, url, userId, guarantee, receiptURL, categories) {
     var promise = new Promise(function (resolve, reject) {
-      db.Products.create({name: name, price: price, url: url,
-        userId: userId, guarantee: guarantee,
-        categories: categories}).then(function (product) {
+      db.Products.create({
+        name: name,
+        price: price,
+        url: url,
+        userId: userId,
+        guarantee: guarantee,
+        receiptURL: receiptURL,
+        categories: categories
+      }).then(function (product) {
         resolve({product: product, categories: categories, userId: userId})
       })
     })
     return promise;
   },
 
-  updateProduct: function (name, price, url, userId, productId, guarantee, categories) {
+  updateProduct: function (name, price, url, userId, productId, guarantee, receiptURL, categories) {
     var promise = new Promise(function (resolve, reject) {
-      db.Products.findByIdAndUpdate(productId, {$set: {name: name, price: price, url: url,
-         userId: userId, guarantee: guarantee,
-         categories: categories}}).then(function (product) {
-           resolve({product:product, categories: categories, userId: userId})
-         })
+      db.Products.findByIdAndUpdate(productId, {$set: {
+        name: name,
+        price: price,
+        url: url,
+        userId: userId,
+        receiptURL: receiptURL,
+        guarantee: guarantee,
+       categories: categories}}).then(function (product) {
+         resolve({product:product, categories: categories, userId: userId})
+       })
     })
     return promise;
   },

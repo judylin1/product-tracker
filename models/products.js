@@ -6,6 +6,7 @@ var productSchema = new mongoose.Schema({
     url: String,
     userId: String,
     guarantee: String,
+    receiptURL: String,
     categories: Array,
 });
 

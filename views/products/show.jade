@@ -12,6 +12,7 @@ block content
               th Product Price
               th Purchase At
               th Guarantee
+              th Receipt
               th Purchased
           tbody
             tr
@@ -21,6 +22,18 @@ block content
               td
                 a(href=product.url target='_blank') !{product.url}
               td=product.guarantee
+              td 
+                button.btn.btn-default(type='button' data-toggle='modal' data-target='#receipt') View Receipt
+                #receipt.modal.fade(tabindex='-1', role='dialog', aria-labelledby='receiptLabel')
+                  .modal-dialog(role='document')
+                    .modal-content
+                      .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                          span(aria-hidden='true') &times;
+                        h4#receiptLabel.modal-title Receipt for 
+                          span=product.name
+                      .modal-body
+                        img(src=product.receiptURL alt='receipt image' width='100%')
               td
                 if cookieId
                   input#purchase(type='checkbox' checked=(purchase ? true : undefined))

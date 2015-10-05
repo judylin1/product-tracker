@@ -6,7 +6,7 @@ block content
     .container
       h1.text-center.alegreyaText Add A New Product
       .errors
-      form.josefinText(action='/users/' + cookieId + '/products/new' method='post')
+      form.josefinText(action='/users/' + cookieId + '/products/new' method='post' enctype="multipart/form-data")
         .form-group
           label(for='name') Product Name: 
           input#name.form-control(type='text' name='name' placeholder=' Required')
@@ -19,6 +19,9 @@ block content
         .form-group
           label(for='guarantee') Guarantee: 
           textarea#guarantee.form-control(name='guarantee' placeholder='Required' rows='8')
+        .form-group
+          label(for='receiptURL') Receipt:
+          input#receiptURL(type='file' name='receiptURL')
         .form-group
           label(for='category') Category:
           span.italic  Select at least one.
