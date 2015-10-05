@@ -19,8 +19,7 @@ block content
               td=product.name
               td $
                 =product.price
-              td
-                a(href=product.url target='_blank') !{product.url}
+              td=product.store
               td=product.guarantee
               td 
                 button.btn.btn-default(type='button' data-toggle='modal' data-target='#receipt') View Receipt
@@ -36,7 +35,7 @@ block content
                         img(src=product.receiptURL alt='receipt image' width='100%')
               td
                 if cookieId
-                  input#purchase(type='checkbox' checked=(purchase ? true : undefined))
+                  input#purchase(type='checkbox' name='purchase' checked=(purchase ? true : undefined))
                   label(for='purchase')
           a.btn.btn-primary(href='/users/'+ cookieId + '/products/' + product._id + '/edit') Edit
           a#borderwhite.btn.btn-default(href='/users/'+ cookieId + '/products') Back

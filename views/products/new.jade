@@ -6,19 +6,19 @@ block content
     .container
       h1.text-center.alegreyaText Add A New Product
       .errors
-      form.josefinText(action='/users/' + cookieId + '/products/new' method='post' enctype="multipart/form-data")
+      form#addProd.josefinText(action='/users/' + cookieId + '/products/new' method='post' enctype="multipart/form-data")
         .form-group
           label(for='name') Product Name: 
-          input#name.form-control(type='text' name='name' placeholder=' Required')
+          input#name.form-control(type='text' name='name' placeholder=' Required' required)
         .form-group
           label(for='price') Product Price To The Nearest Dollar:
-          input#price.form-control(type='number' name='price' min='1' max='9999' size='4' placeholder=' $')
+          input#price.form-control(type='number' name='price' min='1' max='9999' size='4' placeholder=' $' required)
         .form-group
-          label(for='product') Purchase At: 
-          input#product.form-control(type='url' name='url' placeholder=' Required' value='http://www.')
+          label(for='store') Purchase At: 
+          input#store.form-control(type='text' name='store' placeholder=' Required' required)
         .form-group
           label(for='guarantee') Guarantee: 
-          textarea#guarantee.form-control(name='guarantee' placeholder='Required' rows='8')
+          textarea#guarantee.form-control(name='guarantee' placeholder='Required' rows='8' required)
         .form-group
           label(for='receiptURL') Receipt:
           input#receiptURL(type='file' name='receiptURL')

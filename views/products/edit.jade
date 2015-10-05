@@ -17,13 +17,10 @@ block content
           input.form-control(type='number' name='price' id='price' value=product.price)
         p 
           label(for='product') Purchase At:  
-          input.form-control(type='url' name='url' id='product' value=product.url)
+          input.form-control(type='store' name='store' id='product' value=product.store)
         .form-group
           label(for='guarantee') Guarantee: 
           textarea.form-control(name='guarantee' id='guarantee')=product.guarantee
-        //- .form-group
-        //-   label(for='receiptImage') Receipt URL:
-        //-   input#receiptImage.form-control(type='url' name='receiptImage' value=product.receiptImage)
         .form-group
           label(for='category') Category:
           span.italic  Select at least one.

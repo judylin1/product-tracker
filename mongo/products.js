@@ -35,12 +35,12 @@ module.exports = {
     return db.Products.find({_id: {$in: user.products}})
   },
 
-  new: function (name, price, url, userId, guarantee, receiptURL, categories) {
+  new: function (name, price, store, userId, guarantee, receiptURL, categories) {
     var promise = new Promise(function (resolve, reject) {
       db.Products.create({
         name: name,
         price: price,
-        url: url,
+        store: store,
         userId: userId,
         guarantee: guarantee,
         receiptURL: receiptURL,
@@ -52,12 +52,12 @@ module.exports = {
     return promise;
   },
 
-  updateProduct: function (name, price, url, userId, productId, guarantee, receiptURL, categories) {
+  updateProduct: function (name, price, store, userId, productId, guarantee, receiptURL, categories) {
     var promise = new Promise(function (resolve, reject) {
       db.Products.findByIdAndUpdate(productId, {$set: {
         name: name,
         price: price,
-        url: url,
+        store: store,
         userId: userId,
         receiptURL: receiptURL,
         guarantee: guarantee,

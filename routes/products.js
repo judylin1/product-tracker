@@ -1,9 +1,11 @@
+var util = require('util');
 var express = require('express');
 var router = express.Router();
 var logic = require('./../lib/logic.js');
 var db = require('./../models');
 var auth = require('./../lib/auth');
 var route = require('./../mongo/products');
+var expressValidator = require('express-validator');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var cloudinary = require('cloudinary');
@@ -61,28 +63,26 @@ router.post('/:id/edit', function (req, res, next) {
   var userId = req.session.username;
   var name = req.body.name;
   var price = req.body.price;
-  var url = req.body.url;
+  var store = req.body.store;
   var guarantee = req.body.guarantee;
   var categories = logic.check(req.body.categories.split(' '));
   var productId = req.params.id;
-  route.updateProduct(name, price, url, userId, productId, guarantee, receiptURL, categories).then(route.pull).then(route.push).then(function () {
+  route.updateProduct(name, price, store, userId, productId, guarantee, categories).then(route.pull).then(route.push).then(function () {
     res.redirect('/users/' + userId + '/products')
   })
 })
 
 router.post('/new', multipartMiddleware, function (req, res, next) {
-  var receiptURL = req.files.receiptURL.path
+  var receiptURL = req.files.receiptURL.path;
   var userId = req.session.username;
   var name = req.body.name;
   var price = req.body.price;
-  var url = req.body.url;
+  var store = req.body.store;
   var guarantee = req.body.guarantee;
   cloudinary.uploader.upload(receiptURL, function(result) {
     var receiptURL = result.url;
-	  console.log(result);
-    console.log(result.url);
   var categories = logic.check(req.body.categories.split(' '));
-  route.new(name, price, url, userId, guarantee, receiptURL, categories).then(route.push).then(route.updateUser).then(function () {
+  route.new(name, price, store, userId, guarantee, receiptURL, categories).then(route.push).then(route.updateUser).then(function () {
     res.redirect('/users/' + userId + '/products')
   })
 })
