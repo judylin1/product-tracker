@@ -6,7 +6,7 @@ block content
     .container
       h1.text-center.alegreyaText Add A New Product
       .errors
-      form#addProd.josefinText(action='/users/' + cookieId + '/products/new' method='post' enctype="multipart/form-data")
+      form#addProd.josefinText(action='/users/' + cookieId + '/products/new' method='post')
         .form-group
           label(for='name') Product Name: 
           input#name.form-control(type='text' name='name' placeholder=' Required' required)
