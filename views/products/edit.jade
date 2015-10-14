@@ -9,26 +9,47 @@ block content
           !{product.name}
       .errors
       form.josefinText(action='/users/' + cookieId + '/products/' + product._id + '/edit' method='post')
-        .form-group
-          label(for='name') Product Name: 
-          input.form-control(type='text' name='name' id='name' value=product.name)
-        .form-group
-          label(for='price') Product Price To The Nearest Dollar:
-          input.form-control(type='number' name='price' id='price' value=product.price)
-        p 
-          label(for='product') Purchase At:  
-          input.form-control(type='store' name='store' id='product' value=product.store)
-        .form-group
+        .form-group.col-md-6
+          label(for='name') Name: 
+          input#name.form-control(type='text' name='name' value=product.name required)
+        .form-group.col-md-4
+          label(for='price') Price
+          input#price.form-control(type='number' name='price' min='0' step='any' value=product.price required)
+        .form-group.col-md-3
+          label(for='purchase_date') Purchased Date:
+          input#purchase_date.date.form-control(type='text' name='purchase_date' value=moment(product.purchase_date).format('MM/DD/YYYY') pattern='.{10,10}' oninvalid="this.setCustomValidity('MM/DD/YEAR')" onchange="this.setCustomValidity('')" required)
+        p#expDate.hidden=product.exp_date
+        .form-group.col-md-3
+          label(for='exp_date') Warranty Expires In:
+          select#exp_date.form-control(name='exp_date')
+            option(value='' disabled) Select One...
+            option(value='30-day') 30 Days
+            option(value='60-day') 60 Days
+            option(value='90-day') 90 Days
+            option(value='1-year') 1 Year
+            option(value='3-year') 3 Years
+            option(value='5-year') 5 Years
+            option(value='10-year') 10 Years
+            option(value='lifetime') Never, lifetime warranty.
+            option(value='customDate') Custom expiration date:
+        .form-group.col-md-2
+            label#custDate(for='customDate' style='display:none') Expires On:
+            input#customDate.date.form-control(type='text' name='customDate' style='display:none' placeholder='mm/dd/year' pattern='.{10,10}' oninvalid="this.setCustomValidity('MM/DD/YEAR')" onchange="this.setCustomValidity('')" value=product.exp_on)
+        .form-group.col-md-12
+          label(for='store') Purchase At:  
+          input#store.form-control(type='text' name='store' value=product.store required)
+        .form-group.col-md-12
           label(for='guarantee') Guarantee: 
-          textarea.form-control(name='guarantee' id='guarantee')=product.guarantee
-        .form-group
+          textarea#guarantee.form-control(name='guarantee' rows='8' required)=product.guarantee
+        .form-group.col-md-12
           label(for='category') Category:
           span.italic  Select at least one.
           br
           for category in categories
             a.btn.btn-default.category(class=(product.categories.indexOf(category) > -1 ? 'selected' : undefined)).category !{category} 
           input#categories(type='hidden' name='categories' value=product.categories)
-        .form-group
+        .form-group.col-md-12
           input#submit.btn.btn-success(type='submit' value='Update')
+    .container
       a.btn.btn-danger.padbottom(href='/users/'+ cookieId + '/products/' + product._id + '/delete') Delete
       a.btn.padbottom(href='/users/'+ cookieId + '/products/' + product._id) Cancel

@@ -10,10 +10,11 @@ block content
             tr
               th Product Name
               th Product Price
-              th Purchase At
+              th Purchased At
               th Guarantee
+              th Expires In
+              th Expires On
               th Receipt
-              th Purchased
           tbody
             tr
               td=product.name
@@ -21,6 +22,8 @@ block content
                 =product.price
               td=product.store
               td=product.guarantee
+              td=product.exp_date
+              td=product.exp_on
               td 
                 button.btn.btn-default(type='button' data-toggle='modal' data-target='#receipt') View Receipt
                 #receipt.modal.fade(tabindex='-1', role='dialog', aria-labelledby='receiptLabel')
@@ -33,10 +36,6 @@ block content
                           span=product.name
                       .modal-body
                         img(src=product.receiptURL alt='receipt image' width='100%')
-              td
-                if cookieId
-                  input#purchase(type='checkbox' name='purchase' checked=(purchase ? true : undefined))
-                  label(for='purchase')
           a.btn.btn-primary(href='/users/'+ cookieId + '/products/' + product._id + '/edit') Edit
           a#borderwhite.btn.btn-default(href='/users/'+ cookieId + '/products') Back
       else

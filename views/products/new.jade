@@ -6,29 +6,48 @@ block content
     .container
       h1.text-center.alegreyaText Add A New Product
       .errors
-      form#addProd.josefinText(action='/users/' + cookieId + '/products/new' method='post')
-        .form-group
-          label(for='name') Product Name: 
+      form#addProd.josefinText(action='/users/' + cookieId + '/products/new' method='post' enctype="multipart/form-data")
+        .form-group.col-md-6
+          label(for='name') Name: 
           input#name.form-control(type='text' name='name' placeholder=' Required' required)
-        .form-group
-          label(for='price') Product Price To The Nearest Dollar:
-          input#price.form-control(type='number' name='price' min='1' max='9999' size='4' placeholder=' $' required)
-        .form-group
+        .form-group.col-md-4
+          label(for='price') Price:
+          input#price.form-control(type='number' name='price' min='0' step='any' placeholder=' $' required)
+        .form-group.col-md-3
+          label(for='purchase_date') Purchased Date:
+          input#purchase_date.date.form-control(type='text' name='purchase_date' placeholder='mm/dd/year' pattern='.{10,10}' oninvalid="this.setCustomValidity('MM/DD/YEAR')" onchange="this.setCustomValidity('')" required)
+        .form-group.col-md-3
+          label(for='exp_date') Warranty Expires In:
+          select#exp_date.form-control(name='exp_date' required)
+            option(value='' disabled selected) Select One...
+            option(value='30-day') 30 Days
+            option(value='60-day') 60 Days
+            option(value='90-day') 90 Days
+            option(value='1-year') 1 Year
+            option(value='3-year') 3 Years
+            option(value='5-year') 5 Years
+            option(value='10-year') 10 Years
+            option(value='lifetime') Never, lifetime warranty.
+            option(value='customDate') Custom expiration date:
+        .form-group.col-md-2
+            label#custDate(for='customDate' style='display:none') Expires On:
+            input#customDate.date.form-control(type='text' name='customDate' style='display:none' placeholder='mm/dd/year' pattern='.{10,10}' oninvalid="this.setCustomValidity('MM/DD/YEAR')" onchange="this.setCustomValidity('')")
+        .form-group.col-md-12
           label(for='store') Purchase At: 
           input#store.form-control(type='text' name='store' placeholder=' Required' required)
-        .form-group
+        .form-group.col-md-12
           label(for='guarantee') Guarantee: 
           textarea#guarantee.form-control(name='guarantee' placeholder='Required' rows='8' required)
-        .form-group
+        .form-group.col-md-12
           label(for='receiptURL') Receipt:
-          input#receiptURL(type='file' name='receiptURL')
-        .form-group
+          input#receiptURL(type='file' name='receiptURL' required)
+        .form-group.col-md-12
           label(for='category') Category:
           span.italic  Select at least one.
           br
           for category in categories
             a.btn.btn-default.category !{category}  
           input#categories(type='hidden' name='categories')
-        .form-group
+        .form-group.col-md-12
           input#submit.btn.btn-primary(type='submit' value='Add product')
           a.btn(href='/users/'+ cookieId + '/products') Cancel

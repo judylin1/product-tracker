@@ -7,7 +7,7 @@ block content
       .panel-body
         form(action='/amazon' method='post')
           .input-group
-            input.form-control(type='text' name='keywords' placeholder='Search for a product')
+            input.form-control(type='text' name='keywords' placeholder='Search for a product' autofocus)
             span.input-group-btn
               button.btn.btn-default(type='submit') Search 
                 i.fa.fa-amazon
@@ -26,3 +26,5 @@ block content
                   span=result.ItemAttributes[0].ProductGroup[0]
                 p <b>Eligibile for Prime?</b> 
                   span=result.Offers[0].Offer[0].OfferListing[0].IsEligibleForPrime[0] == 0 ? 'Yes' : 'No'
+          else
+            p No products found. Please try again.

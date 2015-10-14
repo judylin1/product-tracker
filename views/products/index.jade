@@ -6,13 +6,14 @@ block content
     .container
       .panel.panel-default
         .panel-title
-          h1 Added Products
+          h1 Bought Products
         .panel-body
           table.table.table-hover
             thead
               tr
                 th Product Name
                 th Guarantee
+                th Expires In
             tbody
               if products
                 for product in products
@@ -20,3 +21,4 @@ block content
                     td
                       a(href='/users/'+cookieId+'/products/'+ product._id) !{product.name}
                     td= product.guarantee
+                    td= moment(product.exp_on).countdown(product.purchase_date).toString()

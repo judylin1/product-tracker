@@ -6,9 +6,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
+var moment = require('moment');
+require('moment-countdown');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var auth = require('./routes/auth');
 var products = require('./routes/products');
 var categories = require('./routes/categories');
@@ -44,7 +45,7 @@ app.use('/categories', categories);
 app.use('/users/:id', function(req, res, next){
   res.locals.userId = req.params.id;
   next();
-}, users);
+});
 
 app.use('/users/:id/products', function(req, res, next){
   res.locals.userId = req.params.id;
