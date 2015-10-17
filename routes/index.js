@@ -18,6 +18,10 @@ router.get('/', function (req, res, next) {
   })
 })
 
+router.get('/terms', function(req, res, next) {
+  res.render('terms')
+})
+
 router.get('/amazon', function(req, res, next) {
   res.render('amazon', {
     cookieId: req.session.username

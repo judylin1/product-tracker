@@ -1,0 +1,67 @@
+extends layout
+
+block content
+  .navbar.navbar-default.navbar-fixed-top
+    a.btn.btn-default.navbar-btn.pull-right(data-toggle='modal' data-target='#signupModal') Sign-Up
+    #signupModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='signupLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+            h4#signupLabel.modal-title Sign-Up
+            if errors
+              for error in errors
+                p.errors #{error}
+          .modal-body
+            form(action='/signup' method='post')
+              .form-group
+                label.control-label(for='name') Name: 
+                input.form-control(type='text' name='name' id='name' value=name)
+              .form-group
+                label.control-label(for='password') Password: 
+                input.form-control(type='password' name='password' id='password')
+              .form-group
+                label.control-label(for='confirmation') Confirm Password: 
+                input.form-control(type='password' name='confirmation' id='confirmation')
+              .form-group
+              input.btn.btn-primary(type='submit' value='Sign-Up')
+              button#noborder.btn.btn-default(type='button' data-dismiss='modal') Close
+    a.btn.btn-primary.navbar-btn.pull-right(data-toggle='modal' data-target='#loginModal') Login
+    #loginModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='loginLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+            h4#loginLabel.modal-title Login
+            if errors
+              for error in errors
+                p.errors #{error}
+          .modal-body
+            form(action='/login' method='post')
+              .form-group
+                label.control-label(for='name') Name: 
+                input.form-control(type='text' name='name' id='name' value=name)
+              .form-group
+                label.control-label(for='password') Password: 
+                input.form-control(type='password' name='password' id='password')
+              input.btn.btn-primary(type='submit' value='Login')
+              button#noborder.btn.btn-default(type='button', data-dismiss='modal') Close
+    .container
+      a(href='/') 
+        h1 Product Tracker
+    .container
+      .page-header
+        h1.text-center Terms & Conditions
+      p By accessing and using the website, You agree to be bound by these Terms of Use of the Product Tracker website (the "Site") without limitation or qualification.
+      p<b>Disclaimer</b>
+      p While We use all reasonable efforts to ensure that the information contained on the Site is current, accurate and complete at the date of publication, and We do Our best to correct errors and omissions as soon as We can, all information, products, services, content and other material on the Site, accessible from the Site, or on a Third-party site are provided "as is" and without warranties or representations of any kind, either express or implied. This means that We expressly disclaim all warranties, express or implied, including without limitation the warranties of title and non-infringement and the implied warranties of merchantability and fitness for a particular purpose. To the maximum extent permitted by law, We accept no liability for any direct or indirect loss or damage, foreseeable or otherwise, including any indirect, consequential, special or exemplary damages arising from the use of the Site or any information contained therein. Users should be aware that they use the Site and its content at their own risk. If You are in a state that does not allow a disclaimer of implied warranties, the above disclaimer or a portion of it may not apply to You. This Site may include content provided by third parties, including materials provided by other users, bloggers and third-party licensors, and/or reporting services. All statements and/or opinions expressed in these materials, and all articles and responses to questions and other content, are solely the opinions and the responsibility of the person or entity providing those materials. These materials do not necessarily reflect Our opinion. We are not responsible, or liable to you or any third party for the content or accuracy of any materials provided by any third parties. Message and Data rates may apply. Content is not available on all carriers. Your carrier's rates apply. All charges are billed by and payable to your mobile service provider. 
+      p<b>In short</b>
+      p This app was created as a capstone project while enrolled in the 
+        span
+          a(href='http://www.galvanize.com/courses/full-stack/') Galvanize Full Stack program. 
+          span It does not come with any warranties or guarantees. By signing up and using Product Tracker, you acknowledge understanding that this app and its creator is not liable if you miss the deadline of any of your product warranties or guarantees and/or if your stored receipts magically disappear.
+      p<b>In other words</b>
+      p If you're looking for an app that really tracks your product warranties and guarantees, find a real company that does it.
+    

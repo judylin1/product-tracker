@@ -11,8 +11,8 @@ module.exports = {
   userProducts: function (category) {
     var promise = new Promise(function (resolve, reject) {
       var products;
-      db.Products.find({_id: {$in: category.products}}).then(function (bm) {
-        products = bm;
+      db.Products.find({_id: {$in: category.products}}).then(function (prod) {
+        products = prod;
         var usersId = products.map(function (product) {
           return product.userId;
         })

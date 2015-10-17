@@ -5,84 +5,176 @@ block content
     include ../partials/header
     main
       .container
-        h1 Categories
-        for category in categories
-          a.category(href=('/categories/' +  category._id)) !{category.name}
-  else
-    .navbar.navbar-default
-      a.btn.btn-default.navbar-btn.pull-right(data-toggle='modal' data-target='#signupModal') Sign-Up
-      #signupModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='signupLabel')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') &times;
-              h4#signupLabel.modal-title Sign-Up
-              if errors
-                for error in errors
-                  p.errors #{error}
-            .modal-body
-              form(action='/signup' method='post')
-                .form-group
-                  label.control-label(for='name') Name: 
-                  input.form-control(type='text' name='name' id='name' value=name)
-                .form-group
-                  label.control-label(for='password') Password: 
-                  input.form-control(type='password' name='password' id='password')
-                .form-group
-                  label.control-label(for='confirmation') Confirm Password: 
-                  input.form-control(type='password' name='confirmation' id='confirmation')
-                .form-group
-                input.btn.btn-primary(type='submit' value='Sign-Up')
-                button#noborder.btn.btn-default(type='button' data-dismiss='modal') Close
-      a.btn.btn-primary.navbar-btn.pull-right(data-toggle='modal' data-target='#loginModal') Login
-      #loginModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='loginLabel')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') &times;
-              h4#loginLabel.modal-title Login
-              if errors
-                for error in errors
-                  p.errors #{error}
-            .modal-body
-              form(action='/login' method='post')
-                .form-group
-                  label.control-label(for='name') Name: 
-                  input.form-control(type='text' name='name' id='name' value=name)
-                .form-group
-                  label.control-label(for='password') Password: 
-                  input.form-control(type='password' name='password' id='password')
-                input.btn.btn-primary(type='submit' value='Login')
-                button#noborder.btn.btn-default(type='button', data-dismiss='modal') Close
+        .page-header
+          h1 Categories
+        .row
+          for category in categories
+            .col-sm-3
+              .thumbnail
+                a(href=('/categories/' +  category._id))
+                  if (category._id == '55d63346f1bf728abea33475')
+                    img.img-rounded(src='/../images/appliances.jpg' alt='appliances')
+                  else if (category._id == '5621baf5c34bd142c50f7fe0')
+                    img.img-rounded(src='/../images/bedroom.jpg' alt='bedroom')
+                  else if (category._id == '5621baf5c34bd142c50f7fe1')
+                    img.img-rounded(src='/../images/den.jpg' alt='den')
+                  else if (category._id == '5621baf5c34bd142c50f7fe2')
+                    img.img-rounded(src='/../images/electronics.jpg' alt='electronics')
+                  else if (category._id == '5621baf5c34bd142c50f7fe3')
+                    img.img-rounded(src='/../images/entertainment.jpg' alt='entertainment')
+                  else if (category._id == '5621baf5c34bd142c50f7fe4')
+                    img.img-rounded(src='/../images/furniture.jpg' alt='furniture')
+                  else if (category._id == '56215640c34bd142c50f7fdc')
+                    img.img-rounded(src='/../images/garage.jpg' alt='garage')
+                  else if (category._id == '5609c7255227702a03a2cf53')
+                    img.img-rounded(src='/../images/jewelry.jpg' alt='jewelry')
+                  else if (category._id == '561c7ca3c34bd142c50f7fce')
+                    img.img-rounded(src='/../images/kitchen.jpg' alt='kitchen')
+                  else if (category._id == '5621baf5c34bd142c50f7fe5')
+                    img.img-rounded(src='/../images/office.jpg' alt='office')
+                  else if (category._id == '55d62034f1bf728abea33471')
+                    img.img-rounded(src='/../images/misc.jpg' alt='misc')
+                .caption.text-center
+                  a(href=('/categories/' +  category._id))
+                    h3 #{category.name}
 
-    .container
-      .page-header
-        h1.text-center.alegreyaText Welcome To Product Tracker
-      .page-body
-        h4.text-center.josefinText The free, simple, and quick way to keep track of your product warranties.
-        h4.text-center.josefinText Sign up to start saving money today.
-    .container.down
+  else
+    .navbar-wrapper
+      .container.navbuttons
+        a.btn.btn-default.navbar-btn.pull-right(data-toggle='modal' data-target='#signupModal') Sign-Up
+        #signupModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='signupLabel')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') &times;
+                h4#signupLabel.modal-title Sign-Up
+                if errors
+                  for error in errors
+                    p.errors #{error}
+              .modal-body
+                form(action='/signup' method='post')
+                  .form-group
+                    label.control-label(for='name') Name: 
+                    input.form-control(type='text' name='name' id='name' value=name)
+                  .form-group
+                    label.control-label(for='password') Password: 
+                    input.form-control(type='password' name='password' id='password')
+                  .form-group
+                    label.control-label(for='confirmation') Confirm Password: 
+                    input.form-control(type='password' name='confirmation' id='confirmation')
+                  .form-group
+                  input.btn.btn-primary(type='submit' value='Sign-Up')
+                  button#noborder.btn.btn-default(type='button' data-dismiss='modal') Close
+        a.btn.btn-primary.navbar-btn.pull-right(data-toggle='modal' data-target='#loginModal') Login
+        #loginModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='loginLabel')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') &times;
+                h4#loginLabel.modal-title Login
+                if errors
+                  for error in errors
+                    p.errors #{error}
+              .modal-body
+                form(action='/login' method='post')
+                  .form-group
+                    label.control-label(for='name') Name: 
+                    input.form-control(type='text' name='name' id='name' autofocus value=name)
+                  .form-group
+                    label.control-label(for='password') Password: 
+                    input.form-control(type='password' name='password' id='password')
+                  input.btn.btn-primary(type='submit' value='Login')
+                  button#noborder.btn.btn-default(type='button', data-dismiss='modal') Close
+    //
+      Carousel
+      ==================================================
+    #myCarousel.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#myCarousel', data-slide-to='0')
+        li(data-target='#myCarousel', data-slide-to='1')
+        li(data-target='#myCarousel', data-slide-to='2')
+      .carousel-inner(role='listbox')
+        .item.active
+          img.first-slide(src='/../images/products.png', alt='products')
+          .container
+            .carousel-caption.black
+              h1.alegreyaText Welcome To Product Tracker
+              h4.josefinText The free, simple, and quick way to keep track of your product warranties.
+              h4.josefinText Sign up to start saving money today.
+        .item
+          img.second-slide(src='/../images/pom.jpg', alt='piece of mind')
+          .container
+            .carousel-caption
+              h1 Piece of mind.
+              p Relax. We got you covered.
+        .item
+          img.third-slide(src='/../images/colorado.jpg', alt='colorado')
+          .container
+            .carousel-caption
+              h1 Built in Denver, CO.
+      a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+        span.sr-only Previous
+      a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+        span.sr-only Next
+    //
+      Marketing messaging and featurettes
+      ==================================================
+    .container.marketing
       .row
-        .col-md-4
-          .wrapper
-            svg(height='60' width='320')
-              rect.shape(height='60' width='320')
-            .hoverbox
-              .text Free
-              #hideText No hidden costs. No credit cards required. 100% Free.
-        .col-md-4
-          .wrapper
-            svg(height='60' width='320')
-              rect.shape(height='60' width='320')
-            .hoverbox
-              .text Simple
-              #hideText No ads. No jumping through hoops. Simple warranty tracking.
-        .col-md-4
-          .wrapper
-            svg(height='60' width='320')
-              rect.shape(height='60' width='320')
-            .hoverbox
-              .text Money-Saving
-              #hideText One place that stores all your warranty data. Get your money back or product serviced BEFORE it expires.
+        .col-lg-4.rect
+          img(src='/../images/free.png', alt='free', width='200', height='200')
+          h2 Free
+          p.josefinText No hidden costs. No credit cards required. 100% Free.
+        .col-lg-4.rect
+          img(src='/../images/simple.png', alt='simple', width='200', height='200')
+          h2 Simple
+          p.josefinText No ads. No jumping through hoops. Simple warranty tracking.
+        .col-lg-4.rect
+          img(src='/../images/savings.png', alt='saving', width='200', height='200')
+          h2 Money-Saving
+          p.josefinText One place that stores all your warranty data. Get your money back or product serviced BEFORE it expires.
+
+      // START THE FEATURETTES
+      hr.featurette-divider
+      .row.featurette
+        .col-md-7
+          h2.featurette-heading All your info. 
+            span.text-muted Right at your fingertips.
+          p.lead Quickly see which warranties are expiring in the upcoming week. Up front. Right on top.
+        .col-md-5
+          img.featurette-image.img-responsive.center-block(src='/../images/landing.jpg', alt='landing page')
+      hr.featurette-divider
+      .row.featurette
+        .col-md-7.col-md-push-5
+          h2.featurette-heading Think you might forget when your warranty expires?
+            span.text-muted Not on our watch.
+          p.lead Get a text message alert seven days before your warranty is about to expire.
+        .col-md-5.col-md-pull-7
+          img.featurette-image.img-responsive.center-block(src='/../images/iphone.png', alt='text message' width='300')
+      hr.featurette-divider
+      .row.featurette
+        .col-md-7
+          h2.featurette-heading Worried about losing your receipts? 
+            span.text-muted Not anymore.
+          p.lead Store your receipts quickly and conveniently for each purchase. Stored now. Stored forever.
+        .col-md-5
+          img.featurette-image.img-responsive.center-block(src='/../images/receipt.jpg', alt='receipt image' width='300')
+      hr.featurette-divider
+      .row.featurette
+        .col-md-7.col-md-push-5
+          h2.featurette-heading Does your warranty expire in 30 days? 60 days? 90 days? None of those? 
+            span.text-muted No problem.
+          p.lead Enter custom expiration dates.
+        .col-md-5.col-md-pull-7
+          img.featurette-image.img-responsive.center-block(src='/../images/customdate.jpg', alt='custom date')
+      hr.featurette-divider
+      // FOOTER
+      footer
+        p.pull-right
+          a(href='#') Back to top
+        p &copy; 2015 Judy Lin &middot; 
+          a(href='/terms') Terms

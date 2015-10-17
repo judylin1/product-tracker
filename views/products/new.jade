@@ -1,6 +1,7 @@
 extends ../layout
 
 block content
+  script(type='text/javascript' src='/../javascripts/formatter.min.js')
   include ../partials/header
   main
     .container
@@ -10,10 +11,13 @@ block content
         .form-group.col-md-6
           label(for='name') Name: 
           input#name.form-control(type='text' name='name' placeholder=' Required' required)
-        .form-group.col-md-4
+        .form-group.col-md-6
+          label(for='serial') Serial #: 
+          input#serial.form-control(type='text' name='serial')
+        .form-group.col-md-2
           label(for='price') Price:
           input#price.form-control(type='number' name='price' min='0' step='any' placeholder=' $' required)
-        .form-group.col-md-3
+        #shrink.form-group.col-md-3
           label(for='purchase_date') Purchased Date:
           input#purchase_date.date.form-control(type='text' name='purchase_date' placeholder='mm/dd/year' pattern='.{10,10}' oninvalid="this.setCustomValidity('MM/DD/YEAR')" onchange="this.setCustomValidity('')" required)
         .form-group.col-md-3
@@ -32,15 +36,35 @@ block content
         .form-group.col-md-2
             label#custDate(for='customDate' style='display:none') Expires On:
             input#customDate.date.form-control(type='text' name='customDate' style='display:none' placeholder='mm/dd/year' pattern='.{10,10}' oninvalid="this.setCustomValidity('MM/DD/YEAR')" onchange="this.setCustomValidity('')")
+        .form-group.col-md-2
+          label(for='phone') Phone # For
+          span
+            a(href='/terms')  Alerts:
+          input#phone.form-control(type='text' name='phone' data-toggle="tooltip" data-placement="bottom" title="Receive a SMS alert 7 days prior to warranty expiration.")
         .form-group.col-md-12
           label(for='store') Purchase At: 
           input#store.form-control(type='text' name='store' placeholder=' Required' required)
         .form-group.col-md-12
           label(for='guarantee') Guarantee: 
           textarea#guarantee.form-control(name='guarantee' placeholder='Required' rows='8' required)
-        .form-group.col-md-12
-          label(for='receiptURL') Receipt:
-          input#receiptURL(type='file' name='receiptURL' required)
+        .form-group.col-md-6
+          label(for='productImg') Product Image:
+          br
+          .fileinput.fileinput-new(data-provides='fileinput')
+            span.btn.btn-default.btn-file
+                span.fileinput-new Select product image
+                span.fileinput-exists Change
+                input#productImg(type='file' name='productImg')
+              span.fileinput-filename
+        .form-group.col-md-6
+          label(for='receiptURL') Receipt Image:
+          br
+          .fileinput.fileinput-new(data-provides='fileinput')
+            span.btn.btn-default.btn-file
+                span.fileinput-new Receipt image required
+                span.fileinput-exists Change
+                input#receiptURL(type='file' name='receiptURL' required)
+              span.fileinput-filename
         .form-group.col-md-12
           label(for='category') Category:
           span.italic  Select at least one.
@@ -51,3 +75,12 @@ block content
         .form-group.col-md-12
           input#submit.btn.btn-primary(type='submit' value='Add product')
           a.btn(href='/users/'+ cookieId + '/products') Cancel
+          #load(style= 'visibility: hidden')
+            div G
+            div N
+            div I
+            div D
+            div A
+            div O
+            div L
+      

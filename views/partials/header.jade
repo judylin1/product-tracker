@@ -1,24 +1,8 @@
 header
-  //- .headermain
-  //-   .header
-  //-     a.left(href='/') productTracker
-  //-     if !cookieId
-  //-       .right
-  //-         a(href='/login') Login
-  //-       .right
-  //-         a(href='/signup') Sign-Up
-  //-     else
-  //-       .right
-  //-         a(href='/logout') Logout
-  //-       .right |
-  //-       .right
-  //-         a(href='/users/'+ cookieId) Purchased Products
-  //-       .right |
-  //-       .right
-  //-         a(href='/users/'+ cookieId + '/products') Products 
-
   .Wrapper
     .SideBar
+      a(href='/users/'+ cookieId + '/products')
+        .LogoBox
       .Nav
         i.fa.fa-money
         a(href='/users/'+ cookieId + '/products')  Purchased Products
@@ -26,10 +10,11 @@ header
         i.fa.fa-plus  
         a(href='/users/'+ cookieId + '/products/new')  Add New Product
       .Nav
-        i.fa.fa-search 
-        a(href='/amazon')  Amazon
+        i.fa.fa-sort  
+        a(href='/users/'+ cookieId + '/')  View By Category
+      //- .Nav
+      //-   i.fa.fa-search 
+      //-   a(href='/amazon')  Amazon
       .Nav
         a.btn.btn-default.logout(href='/logout') Logout  
           i.fa.fa-sign-out
-    a(href='/')
-      .LogoBox

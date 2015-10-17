@@ -35,18 +35,21 @@ module.exports = {
     return db.Products.find({_id: {$in: user.products}})
   },
 
-  new: function (name, price, purchase_date, exp_date, exp_on, store, userId, guarantee, receiptURL, categories) {
+  new: function (name, serial, price, purchase_date, exp_date, exp_on, store, phone, userId, guarantee, receiptURL, productImg, categories) {
     var promise = new Promise(function (resolve, reject) {
       db.Products.create({
         name: name,
+        serial: serial,
         price: price,
         purchase_date: purchase_date,
         exp_date: exp_date,
         exp_on: exp_on,
         store: store,
+        phone: phone,
         userId: userId,
         guarantee: guarantee,
         receiptURL: receiptURL,
+        productImg: productImg,
         categories: categories
       }).then(function (product) {
         resolve({product: product, categories: categories, userId: userId})
@@ -55,13 +58,15 @@ module.exports = {
     return promise;
   },
 
-  updateProduct: function (name, price, purchase_date, exp_date, store, userId, productId, guarantee, categories) {
+  updateProduct: function (name, serial, price, purchase_date, exp_date, exp_on, store, userId, productId, guarantee, categories) {
     var promise = new Promise(function (resolve, reject) {
       db.Products.findByIdAndUpdate(productId, {$set: {
         name: name,
+        serial: serial,
         price: price,
         purchase_date: purchase_date,
         exp_date: exp_date,
+        exp_on: exp_on,
         store: store,
         userId: userId,
         guarantee: guarantee,

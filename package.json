@@ -18,6 +18,7 @@
     "debug": "~2.2.0",
     "dotenv": "^1.2.0",
     "express": "~4.12.4",
+    "formatter.js": "^0.1.5",
     "jade": "~1.9.2",
     "moment": "^2.10.6",
     "moment-countdown": "0.0.3",
@@ -25,7 +26,9 @@
     "mongoose": "^4.1.0",
     "monk": "^1.0.1",
     "morgan": "~1.5.3",
+    "node-schedule": "^0.2.9",
     "serve-favicon": "~2.2.1",
+    "twilio": "^2.5.1",
     "util": "^0.10.3"
   }
 }

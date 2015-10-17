@@ -1,24 +1,56 @@
 extends ../layout
 
 block content
+  script(type='text/javascript' src='/../javascripts/jquery.hideseek.min.js')
   include ../partials/header
   main
     .container
-      .panel.panel-default
-        .panel-title
-          h1 Bought Products
+      .page-header.text-center
+        h1 Purchased Products
+      .panel.panel-danger
+        .panel-heading
+          h4 <b>Expiring Soon:</b>
         .panel-body
-          table.table.table-hover
-            thead
-              tr
-                th Product Name
-                th Guarantee
-                th Expires In
-            tbody
-              if products
-                for product in products
-                  tr
-                    td
-                      a(href='/users/'+cookieId+'/products/'+ product._id) !{product.name}
-                    td= product.guarantee
-                    td= moment(product.exp_on).countdown(product.purchase_date).toString()
+          if products
+            for product in products
+              if (moment().format('MM/DD/YYYY') <= moment(product.exp_on).format('MM/DD/YYYY') && moment(product.exp_on).format('MM/DD/YYYY') <= moment().add(7, 'day').format('MM/DD/YYYY'))
+                p<b>#{product.name}</b>
+                  span  is expiring in 
+                  span <b>#{moment(product.exp_on).countdown(moment(), units, 1).toString()}</b>
+    
+      if products
+      .input-group
+        input#search.form-control(type='text' name='search' placeholder='Search for a product' data-list='.list')
+        span#basic-addon2.input-group-addon
+          i.fa.fa-search
+      br
+      .list
+        for product in products
+          .panel.panel-default
+            .panel-body
+              .media
+                .media-left.media-middle
+                  a(href='/users/'+cookieId+'/products/'+ product._id)
+                    if product.productImg
+                      img.media-object(src=product.productImg alt='product image' height='150' width='200')
+                    else
+                      img.media-object(src='/../images/noImage.png' alt='product image' height='150')
+                .media-body
+                  .row
+                    .col-md-11
+                      br
+                      h2.media-heading
+                        a(href='/users/'+cookieId+'/products/'+ product._id) #{product.name}
+                      br
+                      p <b>Guarantee:</b>  
+                        span=product.guarantee
+                      if (product.exp_on == "Lifetime Warranty")
+                        p<b>Lifetime Warranty</b>
+                      else if (moment(product.exp_on).isBefore(moment()) == false)
+                        p <b>Warranty expires in:</b>  
+                          span=moment(product.exp_on).countdown(moment(), units, 2).toString()
+                      else
+                        p <b>Warranty Expired</b>
+                    .col-md-1
+                      a(href='/users/'+ cookieId + '/products/' + product._id + '/delete')
+                        i.fa.fa-times

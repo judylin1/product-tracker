@@ -5,38 +5,54 @@ block content
   main
     .container
       if product
-        table#paddingtop.table.table-hover
-          thead
-            tr
-              th Product Name
-              th Product Price
-              th Purchased At
-              th Guarantee
-              th Expires In
-              th Expires On
-              th Receipt
-          tbody
-            tr
-              td=product.name
-              td $
-                =product.price
-              td=product.store
-              td=product.guarantee
-              td=product.exp_date
-              td=product.exp_on
+        .page-header
+          h1.text-center #{product.name}
+        if (product.productImg != 'undefined')
+          .col-md-12.center
+            img(src=product.productImg width='200')
+        table#paddingtop.table.table-bordered.table-hover
+          tr
+            th Product Price
+            td $
+              =product.price
+          tr
+            th Serial #
+            td=product.serial
+          tr
+            th Purchased At
+            if (product.store.search('.com') != -1)
               td 
-                button.btn.btn-default(type='button' data-toggle='modal' data-target='#receipt') View Receipt
-                #receipt.modal.fade(tabindex='-1', role='dialog', aria-labelledby='receiptLabel')
-                  .modal-dialog(role='document')
-                    .modal-content
-                      .modal-header
-                        button.close(type='button', data-dismiss='modal', aria-label='Close')
-                          span(aria-hidden='true') &times;
-                        h4#receiptLabel.modal-title Receipt for 
-                          span=product.name
-                      .modal-body
-                        img(src=product.receiptURL alt='receipt image' width='100%')
-          a.btn.btn-primary(href='/users/'+ cookieId + '/products/' + product._id + '/edit') Edit
-          a#borderwhite.btn.btn-default(href='/users/'+ cookieId + '/products') Back
+                a(href="http://www." + product.store target='_blank')
+                  span #{product.store}
+            else
+              td=product.store   
+          tr
+            th Guarantee
+            td=product.guarantee
+          te
+            th Expires In
+            if (product.exp_date == 'customDate')
+              td Custom Expiration Date
+            else
+              td=product.exp_date
+          tr
+            th Expires On
+            td=product.exp_on
+          tr
+            th Receipt
+            td 
+              button.btn.btn-info(type='button' data-toggle='modal' data-target='#receipt') View Receipt
+              #receipt.modal.fade(tabindex='-1', role='dialog', aria-labelledby='receiptLabel')
+                .modal-dialog(role='document')
+                  .modal-content
+                    .modal-header
+                      button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') &times;
+                      h4#receiptLabel.modal-title Receipt for 
+                        span=product.name
+                    .modal-body
+                      img(src=product.receiptURL alt='receipt image' width='100%')
+        a.btn.btn-success(href='/users/'+ cookieId + '/products/' + product._id + '/edit') Edit
+        a#borderwhite.btn.btn-default(href='/users/'+ cookieId + '/products') Back
       else
         a.button.submit(href='/') Back

@@ -1,12 +1,14 @@
 $(document).ready(function() {
+  /* fix side nav */
+  $('.Wrapper').affix({
+    offset: {
+      top: $('.navbar-default').height()
+    }
+  });
+
   //selected vs not selected
   $('.category').click(function () {
     $(this).toggleClass("selected");
-  });
-
-  $('#submit').on('click', function (event) {
-    var selection = $('.selected').text();
-    $('#categories').val(selection);
   });
 
   $('#addProd').submit(function (event) {
@@ -25,48 +27,27 @@ $(document).ready(function() {
       $('.errors').html(errors.join('<br>'))
       event.preventDefault();
     }
-  });
-
-//add slashes to date automatically
-  $(".date").keyup(function(e) {
-    if (e.keyCode != 8) {
-      if ($(this).val().length == 2) {
-        $(this).val($(this).val() + "/");
-      } else if ($(this).val().length == 5) {
-        $(this).val($(this).val() + "/");
-      }
-    } else {
-      var temp = $(this).val();
-      if ($(this).val().length == 5) {
-        $(this).val(temp.substring(0,4));
-      } else if ($(this).val().length == 2) {
-        $(this).val(temp.substring(0,1));
-      }
+    //loading status
+    else {
+      $('#load').css('visibility', 'visible');
+      return true;
     }
   });
 
-// hidden input field
-var expDate = document.getElementById("exp_date");
-expDate.onchange=customInput;
-function customInput() {
-  var expDate = document.getElementById("exp_date");
-  var selectedValue = expDate.options[expDate.selectedIndex].value;
+  $('#submit').on('click', function (event) {
+    var selection = $('.selected').text();
+    $('#categories').val(selection);
+  });
 
-  if (selectedValue == "customDate") {
-    document.getElementById("customDate").style.display = "inline-block";
-    document.getElementById("custDate").style.display = "inline-block";
-  } else {
-    document.getElementById("customDate").style.display = "none";
-    document.getElementById("custDate").style.display = "none";
-  }
-}
+/*jquery hideseek */
+$('#search').hideseek();
 
 //price to 2 decimal places
 document.getElementById("price").onblur =function (){
   this.value = parseFloat(this.value.replace(/,/g, ""))
     .toFixed(2)
     .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    .replace(/\B(?=(\d{4})+(?!\d))/g, ",");
 }
 
 //find selected value
@@ -123,6 +104,56 @@ function addEvent(obj,type,fn) {
   }
 }
 
+})
+
+window.onload = function() {
+  // hidden input field
+  var expDate = document.getElementById("exp_date");
+  expDate.onchange=customInput;
+  function customInput() {
+    var expDate = document.getElementById("exp_date");
+    var selectedValue = expDate.options[expDate.selectedIndex].value;
+
+    if (selectedValue == "customDate") {
+      document.getElementById("customDate").style.display = "inline-block";
+      document.getElementById("custDate").style.display = "inline-block";
+    } else {
+      document.getElementById("customDate").style.display = "none";
+      document.getElementById("custDate").style.display = "none";
+    }
+  }
+
+  //add slashes to date automatically
+    $(".date").keyup(function(e) {
+      if (e.keyCode != 8) {
+        if ($(this).val().length == 2) {
+          $(this).val($(this).val() + "/");
+        } else if ($(this).val().length == 5) {
+          $(this).val($(this).val() + "/");
+        }
+      } else {
+        var temp = $(this).val();
+        if ($(this).val().length == 5) {
+          $(this).val(temp.substring(0,4));
+        } else if ($(this).val().length == 2) {
+          $(this).val(temp.substring(0,1));
+        }
+      }
+    });
+
+    /*tooltip for phone number */
+  $('[data-toggle="tooltip"]').tooltip();
+  /*format phone number */
+  new Formatter(document.getElementById('phone'), {
+    'pattern': '({{999}}) {{999}}.{{9999}}',
+    'persistent': true
+  });
+  $('#phone').formatter({
+    'pattern': '({{999}}) {{999}}-{{9999}}',
+    'persistent': true
+  });
+}
+
 // req.body.exp_date
 var expDate = document.getElementById('expDate').innerHTML;
 if (expDate == '30-day') {
@@ -152,7 +183,6 @@ else if (expDate == 'lifetime') {
 else if (expDate == 'customDate') {
   document.getElementById('exp_date').value = 'customDate';
 }
-})
 
 // if customDate is entered, it should show on edit form
 window.onload = function() {
@@ -165,5 +195,10 @@ if (selectedValue == "customDate") {
 } else {
   document.getElementById("customDate").style.display = "none";
   document.getElementById("custDate").style.display = "none";
+}
+/* no validate */
+var expDate = document.getElementById('expDate').innerHTML;
+if (expDate != 'customDate') {
+  $('.hide').remove();
 }
 }

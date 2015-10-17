@@ -4,19 +4,24 @@ block content
   include ../partials/header
   main
     .container
-      .panel.panel-default
-        .panel-title
-          h1=category.name
-            span  Products
-        .panel-body
-          table.table.table-hover
-            thead
+      .page-header
+        h1.text-center #{category.name}
+          span  Products
+      .panel-body
+        table.table.table-hover
+          thead
+            tr 
+              th Image
+              th Product Name
+              th Product Guarantee
+          tbody
+            for product in products
               tr
-                th Product Name
-                th Product Guarantee
-            tbody
-              for product in products
-                tr
-                  td
-                    a(href='/users/' + product.userId + '/products/' + product._id) !{product.name}
-                  td= product.guarantee
+                td
+                  if product.productImg
+                    img(src=product.productImg width='100' height='100')
+                  else
+                    img(src='/../images/noImage.png' width='100' height='100' alt='no image')
+                td
+                  a(href='/users/' + product.userId + '/products/' + product._id) !{product.name}
+                td= product.guarantee
