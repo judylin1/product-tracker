@@ -42,14 +42,6 @@ $(document).ready(function() {
 /*jquery hideseek */
 $('#search').hideseek();
 
-//price to 2 decimal places
-document.getElementById("price").onblur =function (){
-  this.value = parseFloat(this.value.replace(/,/g, ""))
-    .toFixed(2)
-    .toString()
-    .replace(/\B(?=(\d{4})+(?!\d))/g, ",");
-}
-
 //find selected value
 // var objSelect = document.getElementById("exp_date");
 //
@@ -107,6 +99,13 @@ function addEvent(obj,type,fn) {
 })
 
 window.onload = function() {
+  //price to 2 decimal places
+  document.getElementById("price").onblur =function (){
+    this.value = parseFloat(this.value.replace(/,/g, ""))
+      .toFixed(2)
+      .toString()
+      .replace(/\B(?=(\d{4})+(?!\d))/g, ",");
+  }
   // hidden input field
   var expDate = document.getElementById("exp_date");
   expDate.onchange=customInput;

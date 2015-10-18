@@ -4,7 +4,7 @@
 https://productracker.herokuapp.com/
 
 ## Synopsis:
-Product Tracker is a way for consumers to track the guarantees/warranties of their purchases. Users can add products that they've purchased including images of the product and receipt, and receive a SMS alert seven days prior to their warranty expiring.
+Product Tracker is a way for consumers to track the guarantees/warranties of their purchases. Users can add products they intend to purchase and easily keep track of what they've already bought.
 
 ## Installation:
 To run locally, run this in terminal:
@@ -20,12 +20,8 @@ If nodemon is not installed, run:
 - Node.JS
 - Express / Jade
 - Monk / MongoDB / Mongoose
-- CSS / BootStrap
-- Cloudinary API
-- Moment.js / Moment-Countdown
-- Formatter.js
-- Twilio API
-- NPM Packages include: bCrypt / Countdown / Node-Schedule / Connect-Multiparty / Util
+- CSS / BootStrap / Skeleton / Normalize
+- Cookie-Session / DotENV / bCrypt
 
-<!-- ## ERD Diagram
-![](http://s11.postimg.org/u4bwg3ho3/Screen_Shot_2015_10_04_at_7_53_31_PM.png) -->
+## ERD Diagram
+![](http://s11.postimg.org/u4bwg3ho3/Screen_Shot_2015_10_04_at_7_53_31_PM.png)
