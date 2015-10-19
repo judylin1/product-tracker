@@ -6,6 +6,11 @@ $(document).ready(function() {
     }
   });
 
+  //autofocus modal
+  $('.modal').on('shown.bs.modal', function() {
+    $(this).find('[autofocus]').focus();
+  });
+
   //selected vs not selected
   $('.category').click(function () {
     $(this).toggleClass("selected");

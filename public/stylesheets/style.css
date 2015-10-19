@@ -68,6 +68,12 @@ a:visited, a:link {
   text-decoration: none;
 }
 
+.help-block {
+  font-size: 12px;
+  font-style: italic;
+  display: inline-block;
+}
+
 a.button {
   text-decoration: none;
   color: white;

@@ -49,7 +49,8 @@ block content
           label(for='guarantee') Guarantee: 
           textarea#guarantee.form-control(name='guarantee' placeholder='Required' rows='8' required)
         .form-group.col-md-6
-          label(for='productImg') Product Image:
+          label(for='productImg') Product Image: 
+            span.help-block  Supported Files: .jpg, .jpeg, .png
           br
           .fileinput.fileinput-new(data-provides='fileinput')
             span.btn.btn-default.btn-file
@@ -58,7 +59,8 @@ block content
                 input#productImg(type='file' name='productImg')
               span.fileinput-filename
         .form-group.col-md-6
-          label(for='receiptURL') Receipt Image:
+          label(for='receiptURL') Receipt Image: 
+            span.help-block  Supported Files: .jpg, .jpeg, .png
           br
           .fileinput.fileinput-new(data-provides='fileinput')
             span.btn.btn-default.btn-file
