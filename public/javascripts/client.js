@@ -47,19 +47,6 @@ $(document).ready(function() {
 /*jquery hideseek */
 $('#search').hideseek();
 
-//find selected value
-// var objSelect = document.getElementById("exp_date");
-//
-// function setSelectedValue(selectObj, valueToSet) {
-//   for (var i = 0; i < selectObj.options.length; i++) {
-//     if (selectObj.options[i].text== valueToSet) {
-//       selectObj.options[i].selected = true;
-//       return;
-//     }
-//   }
-// }
-// setSelectedValue(objSelect, "90 Days");
-
 //only allow numbers in date fields
 addEvent(document.getElementById('purchase_date'),'keyup',validate);
 addEvent(document.getElementById('purchase_date'),'mouseover',validate);
